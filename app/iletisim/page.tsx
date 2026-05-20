@@ -21,33 +21,32 @@ export default function Iletisim() {
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    {/* Sol Kolon: İletişim Bilgileri */}
                     <div className="space-y-8">
                         <div>
                             <h1 className="text-4xl font-black text-neutral-900 tracking-tight">Bizimle İletişime Geçin</h1>
-                            <p className="text-neutral-500 mt-2">Sorularınız, ilan talepleriniz veya ekspertiz istekleriniz için ofisimize bekleriz.</p>
+                            <p className="text-neutral-500 mt-2">Türkiye genelindeki yatırım ve gayrimenkul talepleriniz için kurumsal iletişim kanallarımız.</p>
                         </div>
 
                         <div className="bg-white p-8 rounded-2xl border border-neutral-100 shadow-sm space-y-6">
                             <div>
-                                <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Ofis Adresi</span>
+                                <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Merkez Ofis Adresi</span>
                                 <p className="font-semibold text-neutral-800 mt-1">Bayramoğlu Mh. Fatih Sultan Mehmet Cd. No: 230/B Darıca / KOCAELİ</p>
                             </div>
                             <div className="border-t pt-4">
-                                <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Telefon & WhatsApp</span>
+                                <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider">Kurumsal Müşteri Hattı</span>
                                 <p className="font-bold text-neutral-800 text-lg mt-1">0 532 653 11 56</p>
                             </div>
                             <div className="border-t pt-4">
                                 <span className="text-xs text-emerald-600 font-bold uppercase tracking-wider">E-Posta</span>
-                                <p className="font-semibold text-neutral-800 mt-1">fatih.karaduman@gmail.com</p>
+                                <p className="font-semibold text-neutral-800 mt-1">info@yesildaricaemlak.com</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Sağ Kolon: Google Harita Görünümü */}
+                    {/* DÜZELTME: İletişim sayfası harita embed kodu eklendi */}
                     <div className="bg-white p-4 rounded-2xl border border-neutral-100 shadow-sm h-[450px]">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s40.7712!3d29.3514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ2JzE2LjMiTiAyOcKwMjEnMDUuMCJF!5e0!3m2!1str!2str!4v1700000000000"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.932822452445!2d29.35123987654766!3d40.78546523315264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cadc09893d5a0d%3A0x6e7eb553f1465e99!2sBayramo%C4%9Flu%2C%20Fatih%20Sultan%20Mehmet%20Cd.%2C%20Dar%C4%B1ca%2FKocaeli!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str"
                             className="w-full h-full rounded-xl border-0"
                             allowFullScreen={true}
                             loading="lazy"

@@ -5,7 +5,6 @@ import React from 'react';
 import Link from 'next/link';
 import { client, urlFor } from '../sanity/lib/client';
 
-// HATA ÇÖZÜMÜ: imageUrl alanını direkt obje olarak çekiyoruz ki urlFor fonksiyonu bunu işleyebilsin
 async function getIlanlar() {
   const query = `*[_type == "ilan"] | order(_createdAt desc)[0...3] {
     _id,
@@ -39,13 +38,14 @@ export default async function Home() {
             <Link href="/ilanlar" className="hover:text-emerald-600 transition">İlanlarımız</Link>
             <Link href="/iletisim" className="hover:text-emerald-600 transition">İletişim</Link>
           </div>
+          {/* DÜZELTME: Şahıs ismi kurumsal müşteri hattına çevrildi */}
           <a
             href="https://wa.me/905326531156"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-emerald-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-emerald-700 transition shadow-md text-sm"
           >
-            Fatih Karaduman (WhatsApp)
+            Kurumsal WhatsApp Hattı
           </a>
         </div>
       </nav>
@@ -56,14 +56,15 @@ export default async function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-900/80 to-emerald-950/40" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
+          {/* DÜZELTME: Lokal ibare Türkiye geneli vizyona taşındı */}
           <span className="text-emerald-400 font-bold uppercase tracking-widest text-xs bg-emerald-400/10 px-4 py-1.5 rounded-full border border-emerald-400/20">
-            Darıca & Bayramoğlu'nun Güvenilir Yüzü
+            Türkiye Genelinde Gayrimenkulün Güvenilir Adresi
           </span>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mt-6 mb-6">
             Doğru Yatırım, Güvenli Gelecek
           </h1>
           <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Yeşil Darıca Emlak güvencesiyle bölgenin en prestijli arsa, villa ve daire portföyünü keşfedin.
+            Yeşil Darıca Emlak güvencesiyle Türkiye genelindeki en prestijli arsa, konut ve ticari portföyleri keşfedin.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/ilanlar" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg text-center">
@@ -81,7 +82,7 @@ export default async function Home() {
         <div className="flex justify-between items-end mb-12">
           <div>
             <h2 className="text-3xl font-black text-neutral-900 tracking-tight">Öne Çıkan Portföyümüz</h2>
-            <p className="text-neutral-500 mt-2">Sizin için seçtiğimiz en güncel fırsatlar</p>
+            <p className="text-neutral-500 mt-2">Sizin için seçtiğimiz en güncel gayrimenkul fırsatları</p>
           </div>
           <Link href="/ilanlar" className="text-emerald-600 font-bold hover:underline hidden sm:block">
             Tüm İlanları Gör &rarr;
@@ -90,14 +91,13 @@ export default async function Home() {
 
         {ilanlar.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-2xl border border-dashed text-neutral-400">
-            Henüz panelden bir ilan yayınlanmadı. Studio üzerinden ilan ekleyebilirsiniz.
+            Henüz aktif bir ilan bulunmamaktadır.
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {ilanlar.map((property: any) => (
               <div key={property._id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-neutral-100 hover:shadow-xl transition duration-300 flex flex-col group">
                 <div className="relative h-64 overflow-hidden bg-neutral-200">
-                  {/* HATA ÇÖZÜMÜ: urlFor kontrolü eklenerek resim güvenli şekilde render ediliyor */}
                   {property.imageUrl ? (
                     <img
                       src={urlFor(property.imageUrl)}
@@ -132,7 +132,7 @@ export default async function Home() {
                     <span className="text-xl font-black text-emerald-700">{property.price}</span>
                     <Link
                       href={`/ilan/${property._id}`}
-                      className="text-sm font-bold text-neutral-600 hover:text-emerald-600 transition flex items-center gap-1"
+                      className="text-sm font-bold text-neutral-600 hover:text-emerald-700 transition flex items-center gap-1"
                     >
                       Detaylar &rarr;
                     </Link>

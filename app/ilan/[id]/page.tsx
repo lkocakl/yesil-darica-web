@@ -23,8 +23,6 @@ async function getIlanDetail(id: string) {
 export default async function PropertyDetail({ params }: PageProps) {
     const resolvedParams = await params;
     const propertyId = resolvedParams.id;
-
-    // Veriyi Sanity'den kimliğe (id) göre çekiyoruz
     const property = await getIlanDetail(propertyId);
 
     if (!property) {
@@ -37,7 +35,6 @@ export default async function PropertyDetail({ params }: PageProps) {
     }
 
     const realPhone = "905326531156";
-    const formattedPhone = "0 532 653 11 56";
 
     return (
         <div className="min-h-screen bg-neutral-50 text-neutral-800 font-sans">
@@ -87,31 +84,35 @@ export default async function PropertyDetail({ params }: PageProps) {
 
                             <div className="space-y-3">
                                 <a
-                                    href={`https://wa.me/${realPhone}?text=${encodeURIComponent(`Merhaba Fatih Bey, web sitenizdeki "${property.title}" ilanınız hakkında detaylı bilgi alabilir miyim?`)}`}
+                                    href={`https://wa.me/${realPhone}?text=${encodeURIComponent(`Merhaba, web sitenizdeki "${property.title}" ilanınız hakkında detaylı bilgi alabilir miyim?`)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition shadow-md text-center"
                                 >
-                                    WhatsApp ile Bilgi Al
+                                    WhatsApp İletişim Hattı
                                 </a>
                                 <a
                                     href={`tel:${realPhone}`}
                                     className="w-full block bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-4 rounded-xl transition text-center"
                                 >
-                                    {formattedPhone} Ara
+                                    Müşteri Hizmetlerini Ara
                                 </a>
                             </div>
                         </div>
 
+                        {/* DÜZELTME: Harita kısmı çalışan embed iframe koduyla değiştirildi */}
                         <div className="bg-white rounded-2xl p-6 border border-neutral-100 shadow-sm space-y-4">
                             <div>
-                                <h4 className="font-bold text-neutral-900 text-sm uppercase tracking-wider text-emerald-700">Danışman</h4>
-                                <p className="font-extrabold text-neutral-800 text-lg mt-0.5">Fatih KARADUMAN</p>
-                                <p className="text-xs text-neutral-400">fatih.karaduman@gmail.com</p>
-                            </div>
-                            <div className="border-t pt-3">
-                                <h4 className="font-bold text-neutral-900 text-xs uppercase tracking-wider">Ofis Adresi</h4>
+                                <h4 className="font-bold text-neutral-900 text-xs uppercase tracking-wider text-emerald-700">Merkez Ofis Adresi</h4>
                                 <p className="text-sm text-neutral-600 mt-1">Bayramoğlu Mh. Fatih Sultan Mehmet Cd. No: 230/B Darıca / KOCAELİ</p>
+                            </div>
+                            <div className="w-full h-48 rounded-xl overflow-hidden border">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.932822452445!2d29.35123987654766!3d40.78546523315264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cadc09893d5a0d%3A0x6e7eb553f1465e99!2sBayramo%C4%9Flu%2C%20Fatih%20Sultan%20Mehmet%20Cd.%2C%20Dar%C4%B1ca%2FKocaeli!5e0!3m2!1str!2str!4v1710000000000!5m2!1str!2str"
+                                    className="w-full h-full border-0"
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                ></iframe>
                             </div>
                         </div>
                     </div>
