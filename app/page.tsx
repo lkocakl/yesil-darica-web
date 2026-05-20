@@ -1,8 +1,11 @@
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import React from 'react';
 import Link from 'next/link';
 import { client, urlFor } from '../sanity/lib/client';
 
-// Sanity'den ilanları çeken asenkron fonksiyon (GROQ Query)
+// Sanity'den en güncel 3 ilan verisini çeken asenkron fonksiyon
 async function getIlanlar() {
   const query = `*[_type == "ilan"] | order(_createdAt desc)[0...3] {
     _id,
@@ -73,7 +76,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* 3. ÖNE ÇIKAN İLANLAR (SANITY'DEN GELEN DİNAMİK ALAN) */}
+      {/* 3. ÖNE ÇIKAN İLANLAR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex justify-between items-end mb-12">
           <div>
