@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import { client, urlFor } from '../sanity/lib/client';
 
-// Sanity'den en güncel 3 ilan verisini çeken asenkron fonksiyon
+// HATA ÇÖZÜMÜ: imageUrl alanını direkt obje olarak çekiyoruz ki urlFor fonksiyonu bunu işleyebilsin
 async function getIlanlar() {
   const query = `*[_type == "ilan"] | order(_createdAt desc)[0...3] {
     _id,
@@ -13,7 +13,7 @@ async function getIlanlar() {
     location,
     price,
     type,
-    imageUrl,
+    imageUrl, 
     features
   }`;
   const data = await client.fetch(query);
@@ -81,7 +81,7 @@ export default async function Home() {
         <div className="flex justify-between items-end mb-12">
           <div>
             <h2 className="text-3xl font-black text-neutral-900 tracking-tight">Öne Çıkan Portföyümüz</h2>
-            <p className="text-neutral-500 mt-2">Sizin için seçtiğimiz en güncel fırsatlar (Panelden Yönetilebilir)</p>
+            <p className="text-neutral-500 mt-2">Sizin için seçtiğimiz en güncel fırsatlar</p>
           </div>
           <Link href="/ilanlar" className="text-emerald-600 font-bold hover:underline hidden sm:block">
             Tüm İlanları Gör &rarr;
@@ -97,11 +97,16 @@ export default async function Home() {
             {ilanlar.map((property: any) => (
               <div key={property._id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-neutral-100 hover:shadow-xl transition duration-300 flex flex-col group">
                 <div className="relative h-64 overflow-hidden bg-neutral-200">
-                  <img
-                    src={urlFor(property.imageUrl)}
-                    alt={property.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  />
+                  {/* HATA ÇÖZÜMÜ: urlFor kontrolü eklenerek resim güvenli şekilde render ediliyor */}
+                  {property.imageUrl ? (
+                    <img
+                      src={urlFor(property.imageUrl)}
+                      alt={property.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-neutral-300 flex items-center justify-center text-neutral-500 text-sm">Görsel Yok</div>
+                  )}
                   <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow-sm bg-neutral-900">
                     {property.type}
                   </span>
